@@ -1,0 +1,12 @@
+{
+  "name": "gluten",
+  "version": "0.0.1",
+  "main": "path/to/main.css",
+  "ignore": [],
+  "dependencies": {
+    "angular-latest": "1.2.x",
+    "angular-ui-router": "0.2.x",
+    "normalize-css": "2.1.x"
+  },
+  "devDependencies": {}
+}

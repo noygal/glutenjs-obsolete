@@ -1,0 +1,54 @@
+{
+  "name": "gluten",
+  "preferGlobal": false,
+  "version": "0.0.1",
+  "author": "Gal Noy <gal@galnoy.com>",
+  "description": "The staff that glue everything together",
+  "contributors": [
+    {
+      "name": "Gal Noy",
+      "email": "gal@galnoy.com"
+    }
+  ],
+  "bin": {
+    "gluten": "./bin/gluten.js"
+  },
+  "scripts": {
+    "start": "echo starting",
+    "test": "",
+    "predeploy": "echo This will be run before deploying the app",
+    "postdeploy": "echo This will be run after deploying the app"
+  },
+  "main": "./bin/gluten.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "glutenjs",
+    "gluten",
+    "glue",
+    "preprocessor"
+  ],
+  "dependencies": {
+    "absurd": "0.2.x",
+    "bower": "1.2.x",
+    "deployd": "0.6.x",
+    "fs-extra" : "0.8.x",
+    "js-beautify": "1.4.x"
+  },
+  "analyze": true,
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib": "0.8.x",
+    "grunt-typescript": "0.2.x",
+    "grunt-mocha-test": "0.8.x",
+    "typescript-tpm": "0.1.x",
+    "chai": "1.8.x"
+  },
+  "bundledDependencies": [],
+  "license": "GPL-3",
+  "engines": {
+    "node": "0.1.x"
+  }
+}
