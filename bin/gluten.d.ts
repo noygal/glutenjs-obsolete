@@ -15,6 +15,7 @@ declare class GlutenObject {
     public style: AbsurdCss;
     public code: string;
     public id: string;
+    public classes: string[];
 }
 declare class GlutenOptions extends OptionObject {
     public destJS: string;

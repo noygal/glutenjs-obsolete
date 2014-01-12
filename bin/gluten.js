@@ -24,6 +24,7 @@ var GlutenObject = (function () {
         this.style = {};
         this.code = '';
         this.id = '';
+        this.classes = [];
     }
     return GlutenObject;
 })();
@@ -128,12 +129,22 @@ var PreProcessor = (function () {
         return result;
     };
     PreProcessor.prototype.recPreprocessHtml = function (raw) {
-        var result = {};
+        var result = [];
         for (var key in raw) {
             var element = raw[key];
-            var tag = (element.tag || 'div') + (element.id ? '#' + element.id : '') + '.' + key;
+
+            var tag = (element.tag || 'div');
+            if (!!element.id)
+                tag += '#' + element.id;
+            if (!!element.classes)
+                for (var cls in element.classes) {
+                    tag += '.' + cls;
+                }
+            ;
+
             result[tag] = element.attributes ? { _attrs: JSON.parse(JSON.stringify(element.attributes)) } : {};
             Utils.MergeObject(result[tag], this.recPreprocessHtml(element.children));
+            var element = raw[key];
         }
         return result;
     };

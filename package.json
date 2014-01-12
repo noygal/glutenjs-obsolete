@@ -43,7 +43,10 @@
     "grunt-contrib": "0.8.x",
     "grunt-typescript": "0.2.x",
     "grunt-mocha-test": "0.8.x",
+    "grunt-cordovacli" : "0.3.x",
+    "load-grunt-tasks" : "0.2.x",
     "typescript-tpm": "0.1.x",
+    "grunt-modules": "0.1.x",
     "chai": "1.8.x"
   },
   "bundledDependencies": [],
