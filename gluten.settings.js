@@ -14,8 +14,8 @@ module.exports = {
         tsBase: 'src/',
         tsSrc: base_path + 'src/',
         tsDest: base_path + 'bin/gluten/',
-        tsPattern: base_path + 'src/**/*.ts',
-        testsPattern: base_path + 'tests/gluten-*.js',
+        tsPattern: [base_path + 'src/core/**/*.ts', base_path + 'src/gluten/**/*.ts'],
+        testsPattern: base_path + 'tests/gluten/gluten-*.js',
     },
     templates: {
         tsFileName: 'templates',
@@ -23,8 +23,8 @@ module.exports = {
         tsBase: 'src/templates/',
         tsSrc: base_path + 'src/templates/',
         tsDest: base_path + 'bin/templates/',
-        tsPattern: base_path + 'src/templates/**/*.ts',
-        testsPattern: base_path + 'tests/templates-*.js',
+        tsPattern: [base_path + 'src/core/**/*.ts', base_path + 'src/templates/**/*.ts'],
+        testsPattern: base_path + 'tests/templates/templates-*.js',
     },
     // tests: {
     //     pattern: base_path + 'tests/gen-*.js'

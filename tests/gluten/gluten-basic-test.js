@@ -1,6 +1,6 @@
-var gluten = require('../bin/gluten/gluten');
+var gluten = require('../../bin/gluten/gluten');
 
-var samples = require('./samples/gen-samples');
+var samples = require('./gluten-samples');
 var options = {
     destJS : '../gen/tests/js/main.js',
     destCSS : '../gen/tests/css/main.css',

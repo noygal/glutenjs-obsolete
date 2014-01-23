@@ -1,5 +1,5 @@
-var gluten = require('../bin/gluten/gluten');
-var templates = require('../bin/templates/templates');
+var gluten = require('../../bin/gluten/gluten');
+var templates = require('../../bin/templates/templates');
 var options = {
     destJS : '../gen/tests/js/main.js',
     destCSS : '../gen/tests/css/main.css',

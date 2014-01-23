@@ -1,3 +1,38 @@
+var Core;
+(function (Core) {
+    var BaseOptions = (function () {
+        function BaseOptions() {
+        }
+        BaseOptions.prototype.margeOptions = function (o) {
+            Utils.MergeObject(this, o);
+        };
+        return BaseOptions;
+    })();
+    Core.BaseOptions = BaseOptions;
+    var Utils = (function () {
+        function Utils() {
+        }
+        Utils.MergeObject = function (o1, o2) {
+            if (o1 == null || o2 == null)
+                return o1;
+
+            for (var key in o2)
+                if (o2.hasOwnProperty(key))
+                    o1[key] = o2[key];
+
+            return o1;
+        };
+        Utils.GetKeyArray = function (o) {
+            var result = [];
+            for (var key in o) {
+                result.push(key);
+            }
+            return result;
+        };
+        return Utils;
+    })();
+    Core.Utils = Utils;
+})(Core || (Core = {}));
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -8,15 +43,17 @@ var Templates;
 (function (Templates) {
     var HeadOptions = (function (_super) {
         __extends(HeadOptions, _super);
-        function HeadOptions() {
-            _super.apply(this, arguments);
+        function HeadOptions(option) {
+            if (typeof option === "undefined") { option = {}; }
+            _super.call(this);
             this.title = 'Hello world';
             this.description = 'GlutenJS Hello world';
             this.stylesheets = [];
             this.scripts = [];
+            this.margeOptions(option);
         }
         return HeadOptions;
-    })(Templates.BaseOptions);
+    })(Core.BaseOptions);
     Templates.HeadOptions = HeadOptions;
 
     var Head = (function () {
@@ -52,19 +89,24 @@ var Templates;
 })(Templates || (Templates = {}));
 var Templates;
 (function (Templates) {
-    var LayoutOptions = (function () {
-        function LayoutOptions() {
+    var LayoutOptions = (function (_super) {
+        __extends(LayoutOptions, _super);
+        function LayoutOptions(option) {
+            if (typeof option === "undefined") { option = {}; }
+            _super.call(this);
             this.headOptions = new Templates.HeadOptions();
+            this.margeOptions(option);
         }
         return LayoutOptions;
-    })();
+    })(Core.BaseOptions);
     Templates.LayoutOptions = LayoutOptions;
 
     var Layout = (function () {
         function Layout() {
             this.head = new Templates.Head();
         }
-        Layout.prototype.mobileLayout = function (options) {
+        Layout.prototype.mobileLayout = function (data) {
+            var options = new LayoutOptions(data);
             var result = {
                 html: {
                     _: '<!DOCTYPE html>',
@@ -83,39 +125,8 @@ var Templates;
     })();
     Templates.Layout = Layout;
 })(Templates || (Templates = {}));
-var Utils = (function () {
-    function Utils() {
-    }
-    Utils.MergeObject = function (o1, o2) {
-        if (o1 == null || o2 == null)
-            return o1;
-
-        for (var key in o2)
-            if (o2.hasOwnProperty(key))
-                o1[key] = o2[key];
-
-        return o1;
-    };
-    Utils.GetKeyArray = function (o) {
-        var result = [];
-        for (var key in o) {
-            result.push(key);
-        }
-        return result;
-    };
-    return Utils;
-})();
 var Templates;
 (function (Templates) {
-    var BaseOptions = (function () {
-        function BaseOptions(options) {
-            if (typeof options === "undefined") { options = {}; }
-            Utils.MergeObject(this, options);
-        }
-        return BaseOptions;
-    })();
-    Templates.BaseOptions = BaseOptions;
-
     var GlutenTemplates = (function () {
         function GlutenTemplates() {
             this.layout = new Templates.Layout();

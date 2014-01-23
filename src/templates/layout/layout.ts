@@ -2,13 +2,18 @@
 //import head = require('./head');
 
 module Templates {
-    export class LayoutOptions {
+    export class LayoutOptions extends Core.BaseOptions{
         headOptions: HeadOptions = new HeadOptions();
+        constructor(option: Object = {}) {
+            super();
+            this.margeOptions(option);
+        }
     }
 
     export class Layout {
         private head: Head = new Head();
-        public mobileLayout(options: LayoutOptions) {
+        public mobileLayout(data: LayoutOptions) {
+            var options = new LayoutOptions(data);
             var result = {
                 html: {
                     _: '<!DOCTYPE html>',

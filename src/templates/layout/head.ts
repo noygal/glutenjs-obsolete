@@ -1,6 +1,6 @@
 module Templates {
 
-    export class HeadOptions extends BaseOptions {
+    export class HeadOptions extends Core.BaseOptions {
         // Page title
         title: string = 'Hello world';
         // Page description
@@ -9,6 +9,10 @@ module Templates {
         stylesheets: string[] = [];
         // Array of script (*.js)
         scripts: string[] = [];
+        constructor(option: Object = {}) {
+            super();
+            this.margeOptions(option);
+        }
     }
 
     export class Head {

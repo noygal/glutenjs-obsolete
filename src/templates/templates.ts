@@ -1,13 +1,13 @@
+/// <reference path="../core/core.ts"/>
 /// <reference path="layout/layout.ts"/>
-/// <reference path="../processors/utils.ts"/>
 
 //import layout = require('./layout/layout');
 module Templates {
-    export class BaseOptions {
-        constructor(options: any = {}) {
-            Utils.MergeObject(this, options);
-        }
-    }
+    //export class BaseOptions {
+    //    constructor(options: any = {}) {
+    //        Core.Utils.MergeObject(this, options);
+    //    }
+    //}
 
     export class GlutenTemplates {
         public layout = new Layout();
