@@ -10,7 +10,7 @@ module Gluten {
         compile(gluten: GlutenObject, options: GlutenOptions, callback: (processed: ProcessedObject) => void): void {
             this.compiler.processRawObject(gluten, callback);
         }
-        compileWrite(gluten: GlutenObject, optionsRaw: Object = {}) {
+        compileWrite(gluten: GlutenObject, optionsRaw: Object = {}, callback: () => void = () => { }) {
             //console.log(optionsRaw);
 
             var options = new GlutenOptions(optionsRaw);
@@ -18,15 +18,18 @@ module Gluten {
 
             this.compile(gluten, options, (processed: ProcessedObject) => {
                 this.writer.writeOutput(processed, options);
+                callback();
             });
         }
         compileTemplate(template: AbsurdObject, options: GlutenOptions, callback: (processed: ProcessedObject) => void): void {
             this.compiler.processAbsurdObject(template, options, callback);
         }
-        compileTemplateWrite(template: AbsurdObject, callback: (processed: ProcessedObject) => void) {
-            var options = new GlutenOptions(options);
+        compileTemplateWrite(template: AbsurdObject, optionsRaw: Object = {},
+            callback: () => void = () => { }) {
+            var options = new GlutenOptions(optionsRaw);
             this.compileTemplate(template, options, (processed: ProcessedObject) => {
                 this.writer.writeOutput(processed, options);
+                callback();
             });
         }
     }

@@ -20,26 +20,29 @@ module Templates {
             var options = new HeadOptions(data);
             var result = {
                 html: {
-                    head: [
-                    //based on boilerplate mobile
-                        'meta[charset="utf-8"]',
-                        'title{' + options.title + '}',
-                        'meta[name="description" content="' + options.description + '"]',
-                        'meta[name="HandheldFriendly" content="True"]',
-                        'meta[name="MobileOptimized" content="320"]',
-                        'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]',
-                        'meta[http-equiv="cleartype" content="on"]'
-                    ]
+                    head: {
+                        //based on boilerplate mobile
+                        'meta[charset="utf-8"]': '',
+                        'title': options.title,
+                        'meta[name="description"]':
+                        {
+                            _attrs: { 'content': options.description }
+                        },
+                        'meta[name="HandheldFriendly" content="True"]': '',
+                        'meta[name="MobileOptimized" content="320"]': '',
+                        'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': '',
+                        'meta[http-equiv="cleartype" content="on"]': ''
+                    }
                 },
                 css: {}
             }
             ;
-            for (var i in options.stylesheets) {
-                result.html.head.push('link[rel="stylesheet" href="' + options.stylesheets[i] + '"]');
-            }
-            for (var i in options.scripts) {
-                result.html.head.push('script[src="' + options.scripts[i] + '"]');
-            }
+            //for (var i in options.stylesheets) {
+            //    result.html.head.push('link[rel="stylesheet" href="' + options.stylesheets[i] + '"]');
+            //}
+            //for (var i in options.scripts) {
+            //    result.html.head.push('script[src="' + options.scripts[i] + '"]');
+            //}
             return result;
         }
     }

@@ -18,7 +18,19 @@ declare module Templates {
     class Head {
         public headMobile(data: HeadOptions): {
             html: {
-                head: string[];
+                head: {
+                    'meta[charset="utf-8"]': string;
+                    'title': string;
+                    'meta[name="description"]': {
+                        _attrs: {
+                            'content': string;
+                        };
+                    };
+                    'meta[name="HandheldFriendly" content="True"]': string;
+                    'meta[name="MobileOptimized" content="320"]': string;
+                    'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': string;
+                    'meta[http-equiv="cleartype" content="on"]': string;
+                };
             };
             css: {};
         };
@@ -36,7 +48,19 @@ declare module Templates {
                 _: string;
                 _include: {
                     html: {
-                        head: string[];
+                        head: {
+                            'meta[charset="utf-8"]': string;
+                            'title': string;
+                            'meta[name="description"]': {
+                                _attrs: {
+                                    'content': string;
+                                };
+                            };
+                            'meta[name="HandheldFriendly" content="True"]': string;
+                            'meta[name="MobileOptimized" content="320"]': string;
+                            'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': string;
+                            'meta[http-equiv="cleartype" content="on"]': string;
+                        };
                     };
                     css: {};
                 };

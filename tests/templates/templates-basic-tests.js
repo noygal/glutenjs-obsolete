@@ -9,13 +9,12 @@ var should = require('chai').should();
 describe('Basic templates tests', function() {
     describe('Test HTML output', function() {
         it('Compile absurd template', function(done) {
-            console.log(templates);
             gluten.compileTemplate(templates.layout.mobileLayout(), options, function(processed) {
                 done();
             });
         });
         it('compileWrite basicInputElement', function(done) {
-            done();
+            gluten.compileTemplateWrite(templates.layout.mobileLayout(), options, done);
         });
     })
 })
