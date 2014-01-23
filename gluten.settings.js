@@ -13,7 +13,7 @@ module.exports = {
         // tsBase: base_path + 'src/',
         tsBase: 'src/',
         tsSrc: base_path + 'src/',
-        tsDest: base_path + 'bin/',
+        tsDest: base_path + 'bin/gluten/',
         tsPattern: base_path + 'src/**/*.ts',
         testsPattern: base_path + 'tests/gluten-*.js',
     },

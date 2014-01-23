@@ -8,12 +8,21 @@ var OptionObject = (function () {
     function OptionObject() {
     }
     OptionObject.prototype.fillTheBlanks = function (o) {
-        for (var key in this) {
-            if (o[key] !== undefined)
-                this[key] = o[key];
-        }
+        console.log(this);
+        console.log(o);
+
+        Utils.MergeObject(this, o);
+        console.log(this);
     };
     return OptionObject;
+})();
+var BaseOptions = (function () {
+    function BaseOptions(options) {
+        if (typeof options === "undefined") { options = {}; }
+        console.log(this);
+        Utils.MergeObject(this, options);
+    }
+    return BaseOptions;
 })();
 
 var GlutenObject = (function () {
@@ -34,9 +43,9 @@ var GlutenOptions = (function (_super) {
     function GlutenOptions(option) {
         if (typeof option === "undefined") { option = {}; }
         _super.call(this);
-        this.destJS = 'gen/js/main.js';
-        this.destCSS = 'gen/css/main.css';
-        this.destHTML = 'gen/index.html';
+        this.destJS = '../gen/js/main.js';
+        this.destCSS = '../gen/css/main.css';
+        this.destHTML = '../gen/index.html';
         this.src = [];
         this.fillTheBlanks(option);
     }
@@ -188,6 +197,14 @@ var Compiler = (function () {
             callback(result);
         });
     };
+    Compiler.prototype.processAbsurdObject = function (raw, options, callback) {
+        this.absurd.processCombine(raw, function (css, html) {
+            var result = new ProcessedObject();
+            result.css = css;
+            result.html = html;
+            callback(result);
+        });
+    };
     return Compiler;
 })();
 var fse = require('fs-extra');
@@ -213,13 +230,21 @@ var Gluten = (function () {
     Gluten.prototype.compileWrite = function (gluten, optionsRaw) {
         if (typeof optionsRaw === "undefined") { optionsRaw = {}; }
         var _this = this;
-        var options = new GlutenOptions(options);
+        var options = new GlutenOptions(optionsRaw);
+
         this.compile(gluten, options, function (processed) {
             _this.writer.writeOutput(processed, options);
         });
     };
-    Gluten.prototype.test = function () {
-        console.log('test');
+    Gluten.prototype.compileTemplate = function (template, options, callback) {
+        this.compiler.processAbsurdObject(template, options, callback);
+    };
+    Gluten.prototype.compileTemplateWrite = function (template, callback) {
+        var _this = this;
+        var options = new GlutenOptions(options);
+        this.compileTemplate(template, options, function (processed) {
+            _this.writer.writeOutput(processed, options);
+        });
     };
     return Gluten;
 })();

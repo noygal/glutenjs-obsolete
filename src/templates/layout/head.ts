@@ -1,34 +1,46 @@
-export interface HeadOptions {
-    title : string; // Page title
-    description: string; // Page description
-    stylesheets : string[]; // Array of style sheets (*.css)
-    scripts : string[]; // Array of script (*.js)
-}
-export class Head {
-    public static HeadMobile(data : HeadOptions) {
-        var result = {
-            html : {head : [
-                //based on boilerplate mobile
-                'meta[charset="utf-8"]',
-                'title{' + data.title + '}',
-                'meta[name="description" content="' + data.description + '"]',
-                'meta[name="HandheldFriendly" content="True"]',
-                'meta[name="MobileOptimized" content="320"]',
-                'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]',
-                'meta[http-equiv="cleartype" content="on"]'
-            ]},
-            css: {}
+module Templates {
+
+    export class HeadOptions extends BaseOptions {
+        // Page title
+        title: string = 'Hello world';
+        // Page description
+        description: string = 'GlutenJS Hello world';
+        // Array of style sheets (*.css)
+        stylesheets: string[] = [];
+        // Array of script (*.js)
+        scripts: string[] = [];
+    }
+
+    export class Head {
+        public headMobile(data: HeadOptions) {
+            var options = new HeadOptions(data);
+            var result = {
+                html: {
+                    head: [
+                    //based on boilerplate mobile
+                        'meta[charset="utf-8"]',
+                        'title{' + options.title + '}',
+                        'meta[name="description" content="' + options.description + '"]',
+                        'meta[name="HandheldFriendly" content="True"]',
+                        'meta[name="MobileOptimized" content="320"]',
+                        'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]',
+                        'meta[http-equiv="cleartype" content="on"]'
+                    ]
+                },
+                css: {}
+            }
+            ;
+            for (var i in options.stylesheets) {
+                result.html.head.push('link[rel="stylesheet" href="' + options.stylesheets[i] + '"]');
+            }
+            for (var i in options.scripts) {
+                result.html.head.push('script[src="' + options.scripts[i] + '"]');
+            }
+            return result;
         }
-        ;
-        for (var i in data.stylesheets) {
-            result.html.head.push('link[rel="stylesheet" href="' + data.stylesheets[i] + '"]');
-        }
-        for (var i in data.scripts) {
-            result.html.head.push('script[src="' + data.scripts[i] + '"]');
-        }
-        return result;
     }
 }
+
 // <head>
 //         <meta charset="utf-8">
 //         <title></title>

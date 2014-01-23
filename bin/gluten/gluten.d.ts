@@ -1,4 +1,4 @@
-/// <reference path="../lib/ts-types/all.d.ts" />
+/// <reference path="../../lib/ts-types/all.d.ts" />
 declare class AbsurdCss implements Object {
 }
 declare class AbsurdHTMLAttrs implements Object {
@@ -7,6 +7,9 @@ declare class AbsurdHTML implements Object {
 }
 declare class OptionObject {
     public fillTheBlanks(o: Object): void;
+}
+declare class BaseOptions {
+    constructor(options?: any);
 }
 declare class GlutenObject {
     public tag: string;
@@ -66,6 +69,7 @@ declare class Compiler {
     public preProcessor: PreProcessor;
     public absurd: AbsurdProcessor;
     public processRawObject(raw: Object, callback: (processed: ProcessedObject) => void): void;
+    public processAbsurdObject(raw: AbsurdObject, options: any, callback: (processed: ProcessedObject) => void): void;
 }
 declare var fse: any;
 declare var path: any;
@@ -77,5 +81,6 @@ declare class Gluten {
     public writer: Writer;
     public compile(gluten: GlutenObject, options: GlutenOptions, callback: (processed: ProcessedObject) => void): void;
     public compileWrite(gluten: GlutenObject, optionsRaw?: Object): void;
-    public test(): void;
+    public compileTemplate(template: AbsurdObject, options: GlutenOptions, callback: (processed: ProcessedObject) => void): void;
+    public compileTemplateWrite(template: AbsurdObject, callback: (processed: ProcessedObject) => void): void;
 }

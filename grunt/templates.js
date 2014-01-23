@@ -14,14 +14,14 @@ module.exports = function(grunt, moduleName) {
             src: [options.templates.tsSrc + options.templates.tsFileName + '.ts'],
             // src: [options.templates.tsPattern],
             // src: [options.templates.tsSrc],
-            dest: options.templates.tsDest,
-            // dest: options.templates.tsDest + options.templates.tsFileName + '.js',
+            // dest: options.templates.tsDest,
+            dest: options.templates.tsDest + options.templates.tsFileName + '.js',
             options: {
                 module: 'commonjs', //or amd
                 target: 'es5', //or es3
                 base_path: options.templates.tsBase,
                 sourcemap: false,
-                declaration: false
+                declaration: true
             }
             // }
         },

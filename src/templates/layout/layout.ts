@@ -1,22 +1,28 @@
-import head = require('./head');
+/// <reference path="head.ts"/>
+//import head = require('./head');
 
-export interface LayoutOptions {
-	headOptions : head.HeadOptions;
+module Templates {
+    export class LayoutOptions {
+        headOptions: HeadOptions = new HeadOptions();
+    }
+
+    export class Layout {
+        private head: Head = new Head();
+        public mobileLayout(options: LayoutOptions) {
+            var result = {
+                html: {
+                    _: '<!DOCTYPE html>',
+                    _include : this.head.headMobile(options.headOptions),
+                    body: 'Test'
+                },
+                css: {
+                    body: {
+                        backgroundColor: 'red'
+                    }
+                }
+            };
+            return result;
+        }
+    }
 }
 
-export class Layout {
-	MobileLayout(options : LayoutOptions) {
-		var result = {
-			html : {
-				_ : '<!DOCTYPE html>',
-				_include : head.Head.HeadMobile(options.headOptions),
-				body : 'Test'
-			},
-			css : {
-				body : {
-					backgroundColor : 'red'
-				}
-			}
-		}
-	}
-}
