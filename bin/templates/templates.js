@@ -66,9 +66,7 @@ var Templates;
                     head: {
                         'meta[charset="utf-8"]': '',
                         'title': options.title,
-                        'meta[name="description"]': {
-                            _attrs: { 'content': options.description }
-                        },
+                        'meta[name="description"]': Templates.TemplateUtils.SetAttributes({ content: options.description }),
                         'meta[name="HandheldFriendly" content="True"]': '',
                         'meta[name="MobileOptimized" content="320"]': '',
                         'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': '',
@@ -124,6 +122,16 @@ var Templates;
 })(Templates || (Templates = {}));
 var Templates;
 (function (Templates) {
+    var TemplateUtils = (function () {
+        function TemplateUtils() {
+        }
+        TemplateUtils.SetAttributes = function (attributes) {
+            return { _attrs: attributes };
+        };
+        return TemplateUtils;
+    })();
+    Templates.TemplateUtils = TemplateUtils;
+
     var GlutenTemplates = (function () {
         function GlutenTemplates() {
             this.layout = new Templates.Layout();

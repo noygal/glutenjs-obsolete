@@ -15,7 +15,7 @@ module Templates {
         public mobileLayout(data: LayoutOptions) {
             var options = new LayoutOptions(data);
             var result = {
-                html: {
+                html: { 
                     _: '<!DOCTYPE html>',
                     _include : this.head.headMobile(options.headOptions),
                     body: 'Test'

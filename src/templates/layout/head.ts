@@ -24,10 +24,7 @@ module Templates {
                         //based on boilerplate mobile
                         'meta[charset="utf-8"]': '',
                         'title': options.title,
-                        'meta[name="description"]':
-                        {
-                            _attrs: { 'content': options.description }
-                        },
+                        'meta[name="description"]': TemplateUtils.SetAttributes({ content : options.description}),
                         'meta[name="HandheldFriendly" content="True"]': '',
                         'meta[name="MobileOptimized" content="320"]': '',
                         'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': '',

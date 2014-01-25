@@ -21,11 +21,7 @@ declare module Templates {
                 head: {
                     'meta[charset="utf-8"]': string;
                     'title': string;
-                    'meta[name="description"]': {
-                        _attrs: {
-                            'content': string;
-                        };
-                    };
+                    'meta[name="description"]': Object;
                     'meta[name="HandheldFriendly" content="True"]': string;
                     'meta[name="MobileOptimized" content="320"]': string;
                     'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': string;
@@ -51,11 +47,7 @@ declare module Templates {
                         head: {
                             'meta[charset="utf-8"]': string;
                             'title': string;
-                            'meta[name="description"]': {
-                                _attrs: {
-                                    'content': string;
-                                };
-                            };
+                            'meta[name="description"]': Object;
                             'meta[name="HandheldFriendly" content="True"]': string;
                             'meta[name="MobileOptimized" content="320"]': string;
                             'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': string;
@@ -75,6 +67,9 @@ declare module Templates {
     }
 }
 declare module Templates {
+    class TemplateUtils {
+        static SetAttributes(attributes: Object): Object;
+    }
     class GlutenTemplates {
         public layout: Templates.Layout;
     }
