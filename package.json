@@ -11,7 +11,7 @@
     }
   ],
   "bin": {
-    "gluten": "./bin/gluten.js"
+    "gluten": "./bin/gluten/gluten.js"
   },
   "scripts": {
     "start": "echo starting",
@@ -32,7 +32,6 @@
   ],
   "dependencies": {
     "absurd": "0.2.x",
-    "bower": "1.2.x",
     "deployd": "0.6.x",
     "fs-extra" : "0.8.x",
     "js-beautify": "1.4.x"
@@ -44,6 +43,7 @@
     "grunt-typescript": "0.2.x",
     "grunt-mocha-test": "0.8.x",
     "grunt-cordovacli" : "0.3.x",
+    "grunt-bower-install": "0.8.x",
     "load-grunt-tasks" : "0.2.x",
     "typescript-tpm": "0.1.x",
     "grunt-modules": "0.1.x",

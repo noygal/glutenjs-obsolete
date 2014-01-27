@@ -48,8 +48,8 @@ var Templates;
             _super.call(this);
             this.title = 'Hello world';
             this.description = 'GlutenJS Hello world';
-            this.stylesheets = [];
-            this.scripts = [];
+            this.stylesheets = ['css/main.css'];
+            this.scripts = ['js/main.js'];
             this.margeOptions(option);
         }
         return HeadOptions;
@@ -70,12 +70,18 @@ var Templates;
                         'meta[name="HandheldFriendly" content="True"]': '',
                         'meta[name="MobileOptimized" content="320"]': '',
                         'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': '',
-                        'meta[http-equiv="cleartype" content="on"]': ''
+                        'meta[http-equiv="cleartype" content="on"]': '',
+                        _: '<!-- bower:js --><!-- endbower -->'
                     }
                 },
                 css: {}
             };
-
+            for (var i in options.stylesheets) {
+                result.html.head['link[rel="stylesheet" href="' + options.stylesheets[i] + '"]'] = '';
+            }
+            for (var i in options.scripts) {
+                result.html.head['script[src="' + options.scripts[i] + '"]'] = ' ';
+            }
             return result;
         };
         return Head;
@@ -105,8 +111,10 @@ var Templates;
             var result = {
                 html: {
                     _: '<!DOCTYPE html>',
-                    _include: this.head.headMobile(options.headOptions),
-                    body: 'Test'
+                    html: {
+                        _include: this.head.headMobile(options.headOptions),
+                        body: 'Test'
+                    }
                 },
                 css: {
                     body: {

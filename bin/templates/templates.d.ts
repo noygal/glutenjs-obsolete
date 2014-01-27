@@ -26,6 +26,7 @@ declare module Templates {
                     'meta[name="MobileOptimized" content="320"]': string;
                     'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': string;
                     'meta[http-equiv="cleartype" content="on"]': string;
+                    _: string;
                 };
             };
             css: {};
@@ -42,21 +43,24 @@ declare module Templates {
         public mobileLayout(data: LayoutOptions): {
             html: {
                 _: string;
-                _include: {
-                    html: {
-                        head: {
-                            'meta[charset="utf-8"]': string;
-                            'title': string;
-                            'meta[name="description"]': Object;
-                            'meta[name="HandheldFriendly" content="True"]': string;
-                            'meta[name="MobileOptimized" content="320"]': string;
-                            'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': string;
-                            'meta[http-equiv="cleartype" content="on"]': string;
+                html: {
+                    _include: {
+                        html: {
+                            head: {
+                                'meta[charset="utf-8"]': string;
+                                'title': string;
+                                'meta[name="description"]': Object;
+                                'meta[name="HandheldFriendly" content="True"]': string;
+                                'meta[name="MobileOptimized" content="320"]': string;
+                                'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': string;
+                                'meta[http-equiv="cleartype" content="on"]': string;
+                                _: string;
+                            };
                         };
+                        css: {};
                     };
-                    css: {};
+                    body: string;
                 };
-                body: string;
             };
             css: {
                 body: {

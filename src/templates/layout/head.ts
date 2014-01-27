@@ -6,9 +6,9 @@ module Templates {
         // Page description
         description: string = 'GlutenJS Hello world';
         // Array of style sheets (*.css)
-        stylesheets: string[] = [];
+        stylesheets: string[] = ['css/main.css'];
         // Array of script (*.js)
-        scripts: string[] = [];
+        scripts: string[] = ['js/main.js'];
         constructor(option: Object = {}) {
             super();
             this.margeOptions(option);
@@ -24,22 +24,24 @@ module Templates {
                         //based on boilerplate mobile
                         'meta[charset="utf-8"]': '',
                         'title': options.title,
-                        'meta[name="description"]': TemplateUtils.SetAttributes({ content : options.description}),
+                        'meta[name="description"]': TemplateUtils.SetAttributes({ content: options.description }),
                         'meta[name="HandheldFriendly" content="True"]': '',
                         'meta[name="MobileOptimized" content="320"]': '',
                         'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': '',
-                        'meta[http-equiv="cleartype" content="on"]': ''
+                        'meta[http-equiv="cleartype" content="on"]': '',
+                        _ : '<!-- bower:js --><!-- endbower -->' 
                     }
                 },
                 css: {}
             }
             ;
-            //for (var i in options.stylesheets) {
-            //    result.html.head.push('link[rel="stylesheet" href="' + options.stylesheets[i] + '"]');
-            //}
-            //for (var i in options.scripts) {
-            //    result.html.head.push('script[src="' + options.scripts[i] + '"]');
-            //}
+            for (var i in options.stylesheets) {
+                result.html.head['link[rel="stylesheet" href="' + options.stylesheets[i] + '"]'] = '';
+            }
+            for (var i in options.scripts) {
+                //Added space to provent script scr bug (no end tag)
+                result.html.head['script[src="' + options.scripts[i] + '"]'] = ' ';
+            }
             return result;
         }
     }
