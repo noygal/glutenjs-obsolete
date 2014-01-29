@@ -71,7 +71,7 @@ var Templates;
                         'meta[name="MobileOptimized" content="320"]': '',
                         'meta[name="viewport" content="width=device-width, initial-scale=1, minimal-ui"]': '',
                         'meta[http-equiv="cleartype" content="on"]': '',
-                        _: '<!-- bower:js --><!-- endbower -->'
+                        _: '<!-- bower:js --><!-- endbower --><!-- bower:css --><!-- endbower -->'
                     }
                 },
                 css: {}

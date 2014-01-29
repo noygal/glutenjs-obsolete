@@ -1,14 +1,1 @@
-{
-  "name": "gluten",
-  "version": "0.0.1",
-  "main": "gen/tests/css/main.css",
-  "ignore": [],
-  "dependencies": {
-    "angular": "1.2.x",
-    "angular-ui-router": "0.2.x",
-    "normalize-css": "2.1.x"
-  },
-  "devDependencies": {
-    
-  }
-}
+{"name":"gluten","version":"0.0.1","ignore":[],"dependencies":{"angular":"1.2.x","angular-ui-router":"0.2.7","normalize-css":"2.1.x"},"devDependencies":{}}

@@ -1,21 +1,7 @@
 var gruntModules = require('grunt-modules');
 module.exports = function(grunt) {
     grunt.initConfig({
-        'bower-install': {
-            target: {
-
-                // Point to the files that should be updated when
-                // you run `grunt bower-install`
-                src: ['gen/tests/index.html'],
-
-                // Optional:
-                // ---------
-                cwd: __dirname,
-                ignorePath: __dirname + '/gen',
-                // exclude: [],
-                // fileTypes: {}
-            }
-        }
+        
     });
 
     gruntModules(grunt, {
