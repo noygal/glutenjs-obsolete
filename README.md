@@ -8,7 +8,6 @@
 ### Build
 
 ## Gluten element syntax
-reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\msahci\Controller0\Channel5" /f /v TreatAsInternalPort /t REG_DWORD /d 0x00000001
 
 ```javascript
 
